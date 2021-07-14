@@ -30,12 +30,10 @@ func FetchGitlabRepositoriesByGroupName(baseUrl string, groupName string, token 
 	log.Printf("repositorries length: %d", repositoriesLength)
 	urls := make([]string, repositoriesLength)
 	for i, repo := range repositoriesArray {
-		// fmt.Println(repo["ssh_url_to_repo"])
 		url, ok := repo["ssh_url_to_repo"].(string)
 		if !ok {
 			return nil, errors.New("ssh_url_to_repo is not a string")
 		}
-		// log.Println(url)
 		urls[i] = url
 	}
 	return urls, nil
