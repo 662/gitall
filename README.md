@@ -1,6 +1,12 @@
 # Gitall
 
-use git command for all git repositories in the directory.
+Run git command for all git repositories in the directory.
+
+## Installation
+
+1. Download the release
+2. Unzip the release file
+3. Copy binary file to `/usr/local/bin`
 
 ## Usage
 
