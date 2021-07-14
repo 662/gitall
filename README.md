@@ -13,7 +13,10 @@ Run git command for all git repositories in the directory.
 clone all repositories from group
 
 ```
-gitall clone --scm=gitlab --base-url=http://your_gitlab_domain --group=your_group_name --token=your_token
+gitall clone \
+--scm=gitlab \
+--base-url=http://your_gitlab_domain \
+--group=your_group_name --token=your_token
 ```
 
 command for git
