@@ -1,6 +1,8 @@
 package services
 
-import "os/exec"
+import (
+	"os/exec"
+)
 
 func ExecGitCommand(dir string, args ...string) (string, error) {
 	cmd := exec.Command("git", args...)

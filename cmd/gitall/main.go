@@ -15,6 +15,7 @@ func main() {
 		Version: "0.0.1",
 		Action:  commands.GitallAction,
 		Commands: []*cli.Command{
+			&commands.MRCommand,
 			&commands.CloneCommand,
 		},
 	}
