@@ -2,11 +2,13 @@ package commands
 
 import (
 	"errors"
+	"fmt"
 	"gitall/pkg/services"
 	"log"
 	"os"
 	"time"
 
+	"github.com/gookit/color"
 	"github.com/urfave/cli/v2"
 )
 
@@ -55,10 +57,11 @@ func getRepositoryUrls(scm string, groupName string, baseUrl string, token strin
 }
 
 func GitCloneAll(dir string, urls []string) error {
+	red := color.FgRed.Render
 	for _, url := range urls {
 		log.Printf("cloneing %s", url)
-		if _, err := services.ExecGitCommand(dir, "clone", url); err != nil {
-			return err
+		if msg, err := services.ExecGitCommand(dir, "clone", url); err != nil {
+			fmt.Printf("%s\n", red(msg))
 		}
 	}
 	return nil

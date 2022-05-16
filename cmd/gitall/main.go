@@ -12,7 +12,7 @@ func main() {
 	app := &cli.App{
 		Name:    "GitAll",
 		Usage:   "Git command for multiple repositories",
-		Version: "0.0.1",
+		Version: "0.0.2",
 		Action:  commands.GitallAction,
 		Commands: []*cli.Command{
 			&commands.MRCommand,

@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"fmt"
 	"gitall/pkg/services"
 	"io/ioutil"
 	"log"
@@ -9,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gookit/color"
 	"github.com/urfave/cli/v2"
 )
 
@@ -31,6 +33,7 @@ func GitallAction(c *cli.Context) error {
 }
 
 func ExecGitCommandInSubdirectory(basedir string, args []string) error {
+	red := color.FgRed.Render
 	files, err := ioutil.ReadDir(basedir)
 	if err != nil {
 		return err
@@ -43,12 +46,8 @@ func ExecGitCommandInSubdirectory(basedir string, args []string) error {
 
 		log.Printf("run command \"git %s\" in %s", strings.Join(args[:], " "), dir)
 
-		msg, err := services.ExecGitCommand(dir, args...)
-		if err != nil {
-			return err
-		}
-		if msg != "" {
-			log.Println(msg)
+		if msg, err := services.ExecGitCommand(dir, args...); err != nil {
+			fmt.Printf("%s\n", red(msg))
 		}
 	}
 	return nil
